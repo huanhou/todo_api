@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO-List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Todo List</h2>
+    <button onclick="showTodos()" id="show">Show List</button>
+    <hr />
+    <div id="list"></div>
+    <div class="form">
+      <h2>Add to TODO list</h2>
+      <div class="inline">
+        <input name="newtodo" id="newtodo" required />
+        <button type="submit" onclick="additem()">Add item</button>
+        <br />
+        <div id="message"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    async function showTodos() {
+      const responce = await fetch(
+        "https://jsonplaceholder.typicode.com/todos"
+      );
+      const todos = await responce.json();
+      todos.slice(1, 5).forEach((t) => {
+        document.getElementById("list").innerHTML +=
+          '<div class="inline">' +
+          ' <input type="checkbox" onclick="completed()" class = "check">' +
+          "<h3 class = items>" +
+          ` ${t["title"]} ` +
+          "</h3>" +
+          "</div>";
+      });
+      document.getElementById("show").style.display = "none";
+    }
+
+    async function additem() {
+      let message = document.getElementById("message");
+      const title = document.getElementById("newtodo").value;
+
+      const responce = await fetch(
+        "https://jsonplaceholder.typicode.com/todos"
+      );
+      const todos = await responce.json();
+      method: "POST";
+      headers: "application/json, text/plain, */*",
+        "Content-Type:application/json";
+      body: JSON.stringify({ title: title });
+      if (!responce.ok || title.length === 0) {
+        message.textContent = "Error occured";
+        message.style.color = "red";
+      } else {
+        message.textContent = "Successfully added!";
+        message.style.color = "green";
+      }
+    }
+
+    async function deleteItem() {
+      let message = document.getElementById("message");
+      const title = document.getElementById("newtodo").value;
+
+      const responce = await fetch("example.json");
+      const todos = await responce.json();
+      method: "DELETE";
+      headers: "application/json, text/plain, */*",
+        "Content-Type:application/json";
+      body: JSON.stringify({ title: title });
+    }
+
+    async function completed() {
+      const completed = document.getElementsByClassName("check");
+      const responce = await fetch(
+        "https://jsonplaceholder.typicode.com/todos"
+      );
+      const complete = await responce.json;
+      method: "PUT";
+    }
+    if (!responce.ok || title.length === 0) {
+      message.textContent = "Error occured";
+      message.style.color = "red";
+    } else {
+      message.textContent = "Updated to true";
+      message.style.color = "green";
+    }
+  </script>
+</html>

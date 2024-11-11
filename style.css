@@ -1,0 +1,72 @@
+body {
+  background-color: indianred;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  border: 3px white solid;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin-left: 20px;
+  background-color: rgb(239, 112, 129);
+}
+
+button:hover {
+  color: indianred;
+  background-color: white;
+}
+
+h2 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.list h3 {
+  background-color: rgb(210, 131, 131);
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.check {
+  width: 35px;
+}
+
+@media (max-width: 420px) {
+  h2 {
+    font-size: 25px;
+  }
+  button {
+    margin-left: 0;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.form h2 {
+  margin-top: 20px;
+}
+
+#message {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 10px;
+}
